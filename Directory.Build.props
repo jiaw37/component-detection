@@ -3,6 +3,9 @@
     <PropertyGroup Label="Build">
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <LangVersion>latest</LangVersion>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
         <TreatWarningsAsErrors Condition="'$(OFFICIAL_BUILD)' == 'True'">true</TreatWarningsAsErrors>
     </PropertyGroup>
@@ -20,21 +23,8 @@
     </PropertyGroup>
 
     <ItemGroup Label="Package References">
-        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" PrivateAssets="all"/>
-        <PackageReference Include="MinVer" PrivateAssets="all"/>
-        <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all"/>
-    </ItemGroup>
-
-    <PropertyGroup>
-        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)analyzers.ruleset</CodeAnalysisRuleSet>
-        <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
-        <NoWarn>NU1608,NU5119</NoWarn>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(OFFICIAL_BUILD)'=='True'">
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    </PropertyGroup>
-
-    <ItemGroup Label="Package References">
+        <PackageReference Include="Roslynator.Analyzers" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" PrivateAssets="all"/>
         <PackageReference Include="MinVer" PrivateAssets="all"/>
     </ItemGroup>
 </Project>
